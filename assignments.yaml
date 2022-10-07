@@ -1,0 +1,22 @@
+---
+all:
+  power_infusion:
+    "Nicc": "Seaborne"
+
+example:
+  named_assignment:
+    name: "Pumpledin"
+  class_assignment:
+    class: PALADIN
+  mind_control_priests:
+    class: PRIEST
+    spec: SHADOW, HOLY, DISCIPLINE
+    number: 2
+
+anub:
+grand_widow:
+  mind_controlling_priest:
+    name: "Nicc"
+
+
+  

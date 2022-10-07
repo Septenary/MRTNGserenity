@@ -1,0 +1,13 @@
+{{colortext("magenta", "Phase 1:")}}
+\n
+{{instruct(raid.getplayers_by_flag("is_tank", True), "Tank at the back of the room. Stack adds on boss")}}
+{{instruct(raid.getplayers_by_flag("is_melee_dps", True), "Spread around boss. Cleave adds.")}}
+{{instruct(raid.getplayers_by_flag("is_ranged_dps", True), "Spread at max range. Avoid straight lines of people to boss.")}}
+{{instruct(raid.getplayers_by_flag("is_healer", True), "Spread at max range. Avoid straight lines of people to boss.")}}
+\n
+{{instruct(raid.getplayers("HUNTER"), "Drop frost traps to slow corpse scarabs")}}
+\n
+{{colortext("magenta", "Phase 2: Locus Swarm") }}
+\n
+{{instruct(raid.getplayers_by_flag("is_tank", True), "Kite around room. Keep boss near wall.")}}
+{{instruct(raid.getplayers_by_flag("is_tank", False), "Kill adds in middle of room. Stay away from boss to avoid locus swarm.")}}

@@ -1,0 +1,67 @@
+{# 
+    You can also use these tags to create multiline comments.
+    Comments can span multiple lines, or all be anywhere.
+#}
+
+Between this{# COMMENT #} is a comment, which you can't see in the output.
+\n\n
+
+{#
+    To allow you to write clean templates, newlines in the template are totally ignored.
+    Use \n to indicate you would like a new line in your output.
+#}
+
+This is on line 1. 
+This is also on line 1, as no newline was asked for.
+\n
+But this is on line2.\nAnd this is on line 3.
+\n\n
+
+{# 
+    You can put a player in {{ PLAYER }} tags, to write that players name in color.
+    If a player doesn't exist, this will produce errors you will see at the end of the run, and
+    put MISSING_DATA into the output
+#}
+This is Pumpledin, coloured. {{ Pumpledin }}\n
+This is a player called foo, who doesn't exist. {{ foo }}
+\n\n
+
+{#
+    You can get the first player from a list of candidate players, based on who is in the raid.
+    This below will be Pumpledin, as foo isn't in the raid.
+#}
+This will be Pumpledin, as both are in the list but Pumpledin is first: {{ first("Pumpledin", "Nicc") }} \n
+This will be Burdock, as while Foobar is first, they aren't in the raid: {{ first("Foobar", "Burdock") }}
+\n\n
+
+{# 
+    This will select a random player from a list, if you want to fairly "spread the load".
+    It will still ignore people that don't exist.
+#}
+If you run this multiple times, sometimes this will be Pumpledin, sometimes Burdock, but never Foobar: {{ random("Foobar", "Pumpledin", "Burdock") }}
+\n\n
+
+{#
+    Jinja2 has built in filters. The most useful are likely to be first and random.
+#}
+
+This is all the priests in the raid, regardless of spec: {{ players_by_class("PRIEST") }}
+\n
+This is the first priest: {{ first(players_by_class("PRIEST")) }}
+\n
+This is a random priest: {{ random(players_by_class("PRIEST")) }}
+\n\n
+
+{#
+    Use instruct() to have an instruction for a specific person or group of people.
+    It will wrap things in {p: } tags, so MRT only shows it to those people.
+#}
+This is an instruction that will only appear for Nicc: {{instruct("Nicc", "Heal People !")}}
+\n
+This is an instruction that will only appear for Nicc and Maybella: {{instruct(["Nicc", "Maybella"], "Heal More People !!")}}
+\n
+This is an instruction that will only appear for Priests: {{instruct(players_by_class("PRIEST"), "Dispel People As Well !")}}
+\n
+This is an instruction that will only appear for Arcane Mages: {{instruct(players_by_spec("MAGE", "ARCANE"), "Shoot Things !")}}
+\n
+
