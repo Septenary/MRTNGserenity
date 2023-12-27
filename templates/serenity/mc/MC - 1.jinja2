@@ -1,0 +1,27 @@
+{{ colortext("red2", "##Loot the dogs##") }}
+\n{{ first(randomList("MAGE")) }} [MTs -> G2]
+\n{{ second(randomList("MAGE")) }} [OTs -> G3]
+\n{{ third(randomList("MAGE")) }} [G4 -> G8]
+\n{{ fourth(randomList("MAGE")) }} [G5 -> G7]
+\n{{ fifth(randomList("MAGE")) }} [G6 -> Cleanup]
+\n
+\n{skull}{{ colortext("palevioletred", "*Luci/Gehen") }}+{cross}{triangle} [{{ first(raid.getplayers_by_flag("is_tank", True))}}]
+\n{skull}{{ colortext("palevioletred", "*Magma") }}
+\n{Hunter}{Priest}{Mage}{Warlock}{Druid} Boss |cffee5555fears|r, stay |cff55ee55max range|r
+\n
+\n{{ colortext("palevioletred", "*Garr") }} => [{{ first(raid.getplayers_by_flag("is_tank", True))}}]
+\n{skull}{cross} {{ second(raid.getplayers_by_flag("is_tank", True))}}
+\n{square}{moon} {{ third(raid.getplayers_by_flag("is_tank", True))}}
+\n{triangle}{diamond} {{ fourth(raid.getplayers_by_flag("is_tank", True))}}
+\n{circle}{star} {{ fifth(raid.getplayers_by_classspec("WARRIOR")) }}
+\n{circle}= {spell:710} {{ second(raid.getplayers_by_classspec("WARLOCK")) }}
+\n{star}= {spell:710} {{ first(raid.getplayers_by_classspec("WARLOCK")) }}
+\n{Warrior}{Paladin}{Rogue}{Druid} Ads |cffee5555blast on death, |cffff0000wiping the raid|r via trash pulls|r, |cff55ee55you know this|r, and have your |cffff00ffbacks to the wall|r
+\nGarr>{skull}{cross}{square}{moon}
+\n         {triangle}{diamond}{circle}{star}
+\n
+\n{skull} {{ colortext("palevioletred", "*Gole") }} => [ {{ first(raid.getplayers_by_flag("is_tank", True))}} ]
+\n{cross} [ {{ second(raid.getplayers_by_flag("is_tank", True))}} ]
+\n{triangle} [ {{ third(raid.getplayers_by_flag("is_tank", True))}} ]
+
+\n|cff808080v2.1, meroe for <Serenity>|r

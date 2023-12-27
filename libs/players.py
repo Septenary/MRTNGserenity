@@ -158,7 +158,7 @@ roles = {
     (Spec.MARKSMANSHIP, GameClass.HUNTER): Role(gameclass=GameClass.HUNTER, 
                                                     spec=Spec.MARKSMANSHIP, 
                                                     is_hunter_dps=True,
-                                                    rh_name="Marksman"),
+                                                    rh_name="Marksmanship"),
     (Spec.SURVIVAL, GameClass.HUNTER): Role(gameclass=GameClass.HUNTER, 
                                                     spec=Spec.SURVIVAL, 
                                                     is_hunter_dps=True,
@@ -235,7 +235,7 @@ roles = {
     (Spec.DESTRUCTION, GameClass.WARLOCK): Role(gameclass=GameClass.WARLOCK, 
                                                     spec=Spec.DESTRUCTION, 
                                                     is_caster_dps=True,
-                                                    rh_name="Destuction"),
+                                                    rh_name="Destruction"),
     
     # Priest
     (Spec.HOLY, GameClass.PRIEST): Role(gameclass=GameClass.PRIEST, 
@@ -322,6 +322,30 @@ class_colors = {
 class Player:
     def __init__(self, name: str, spec: Spec = None, gameclass: GameClass = None, rh_string: str = None):
         self.name = name
+        match name:
+            case "Crowdcontrol/Safeword/Thornball":
+                self.name = "Crowdcontrol"
+            case "Scard/Jatia/Darge/UtesDad":
+                self.name = "Scard"
+            case "Backstab/Pink":
+                self.name = "Backstab"
+            case "meroe":
+                self.name = "Meroe"
+            case "halint":
+                self.name = "Halint"
+            case "rizz":
+                self.name = "Rizz"
+            case "AppleCandy":
+                self.name = "Applecandy"
+            case "DrPew":
+                self.name = "Drpew"
+            case "JeanClaudius":
+                self.name = "Jeanclaudius"
+            case "NorthFreeze":
+                self.name = "Northfreeze"
+            case "Foot":
+                self.name = "Footlover"
+
         # Construction with a name and a class
         if isinstance(gameclass, GameClass) and isinstance(spec, Spec):
             self.spec = spec
@@ -335,6 +359,7 @@ class Player:
                     self.gameclass = role.gameclass
 
     def color_name(self):
+        # print(self.name)
         return f"|cff{class_colors[self.gameclass]}{self.name}|r" 
 
     @property

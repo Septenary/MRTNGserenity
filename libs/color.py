@@ -565,7 +565,9 @@ YELLOW1 = RGB(255, 255, 0)
 YELLOW2 = RGB(238, 238, 0)
 YELLOW3 = RGB(205, 205, 0)
 YELLOW4 = RGB(139, 139, 0)
+WARRIOR = RGB(198, 155, 109)
 #Add colors to colors dictionary
+colors['warrior'] = WARRIOR
 colors['aliceblue'] = ALICEBLUE
 colors['antiquewhite'] = ANTIQUEWHITE
 colors['antiquewhite1'] = ANTIQUEWHITE1

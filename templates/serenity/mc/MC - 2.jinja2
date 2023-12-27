@@ -1,0 +1,40 @@
+{{ colortext("red2", "##Loot the dogs##") }}
+\n{{ first(randomList("MAGE")) }} [MTs -> G2]
+\n{{ second(randomList("MAGE")) }} [OTs -> G3]
+\n{{ third(randomList("MAGE")) }} [G4 -> G8]
+\n{{ fourth(randomList("MAGE")) }} [G5 -> G7]
+\n{{ fifth(randomList("MAGE")) }} [G6 -> Cleanup]
+\n
+\n{{ colortext("palevioletred", "*Harbs") }}
+\n{skull}+{triangle}{diamond}{circle}{star}[ {{ first(raid.getplayers_by_flag("is_tank", True))}} ]
+{# 
+    Warriors are grabbed like this for kick assignments
+#}
+\n
+\n{triangle}= ( {{ first(players_by_class("ROGUE")) }} / {{ second(raid.getplayers_by_classspec("WARRIOR", "Protection")) }} )|r
+\n{diamond}= ( {{ second(players_by_class("ROGUE")) }} / {{ third(raid.getplayers_by_classspec("WARRIOR", "Protection")) }} )|r
+\n{circle}= ( {{ third(players_by_class("ROGUE")) }} / {{ third(raid.getplayers_by_classspec("WARRIOR", "Fury")) }} )|r
+\n{star}= ( {{ fourth(players_by_class("ROGUE")) }} / {{ fourth(raid.getplayers_by_classspec("WARRIOR", "Fury")) }} )|r
+\n{Warrior}{Rogue}: interrupt Dark Mending
+\n{triangle}~{diamond}~{circle}~{star} > {skull}
+\n
+
+
+\n{{ colortext("palevioletred", "*Domo") }}
+\n|cff00ff96P1|r. {skull}{cross}{square}{moon} |cffee5555***NO AOE WHATSOEVER***|r
+\n|cff00ff96P2|r. {triangle}{diamond}{circle}{star} casts |cffee5555melee/spell damage reflect,|r |cff55ee55you have DBM configured|r
+\n
+\n{{ colortext("palevioletred", "Executus") }} - [ {{ fifth(players_by_class("WARRIOR")) }} ] + ( {{ random(raid.getplayers_by_flag("is_healer", True))}} )
+\n{triangle}= ( {{ first(raid.getplayers_by_classspec("MAGE")) }} )
+\n{diamond}= ( {{ second(raid.getplayers_by_classspec("MAGE")) }} )
+\n{circle}= ( {{ third(raid.getplayers_by_classspec("MAGE")) }} )
+\n{star}= ( {{ fourth(raid.getplayers_by_classspec("MAGE")) }} )
+
+\n{skull} =>{triangle} [ {{ first(raid.getplayers_by_flag("is_tank", True))}} ]
+\n{cross} =>{diamond} [ {{ second(raid.getplayers_by_flag("is_tank", True))}} ]
+\n{square} =>{circle} [ {{ third(raid.getplayers_by_flag("is_tank", True))}} ]
+\n{moon} =>{star} [ {{ fourth(raid.getplayers_by_flag("is_tank", True))}} ]
+
+\n{Warrior}{Rogue} Use harbinger kick assignments for |cff00ff96P2|r.
+\nAll adds will be tanked |cffff00ffrelatively close to the raid|r.
+\n|cff808080v2.1, meroe for <Serenity>|r

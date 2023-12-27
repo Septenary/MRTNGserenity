@@ -1,0 +1,45 @@
+{{ colortext("palevioletred", "*Razorgore") }}
+\n|cff00ff96P1: |r Mages > L'nnaires > Dg'spawn
+\n|cff00ff96P2:|r {spell:23023}|cffee5555Conflag|r 
+\nBoss turns, ignores #1 threat for 10sec
+\nDPS stay third or lower on threat
+\nPumpers save |cff00ffffPotion CD|r for LIP next boss
+\n|cffee5555Don't|r enter next room until raid is ready to do so |cff55ee55as a group|r
+
+
+{# 
+Each pack consists of a semi-random ensemble of 4 different monster types, with a total of 6 mobs per pull. 
+Each pack has at least one monster of each category and never more than one captain.
+#}
+\n
+\n
+\n{{ colortext("palevioletred", "**vael packs") }}
+\n{skull}{cross}({circle}) Flamescale
+\n  {skull} {{ first(raid.getplayers_by_flag("is_tank", True)) }}
+\n  {cross} {{ third(raid.getplayers_by_flag("is_tank", True)) }}
+\n  ({circle} {{ fourth(raid.getplayers_by_flag("is_tank", True)) }})
+\n
+\n{square}{moon}({circle}) Seether
+\n  {square} {{ second(raid.getplayers_by_flag("is_tank", True)) }}
+\n  {moon} {{ second(raid.getplayers_by_classspec("Warrior", "Fury")) }}
+\n  ({circle} {{ fourth(raid.getplayers_by_flag("is_tank", True)) }})
+\n
+\n{diamond}{triangle}({circle}) Wyrmkin - {spell:18658}
+\n  {diamond} {{ second(players_by_class("Druid")) }}
+\n  {triangle} {{ first(players_by_class("Druid")) }}
+\n  ({circle} {{ third(players_by_class("Druid")) }})
+\n
+\n{star} Captain
+\n  {star} {{ first(raid.getplayers_by_flag("is_tank", True)) }} <- 
+({star} {{ raid.getplayer_by_name("Nará") }})
+\n
+\n{c:rogue}
+|cffffff00Rogues:|r
+\nYou're going to be busy after this, so pop{spell:13750}|cfffff569AR|r and{spell:13877}|cfffff569BF|r here. 
+\nDon't cleave the{spell:22425}Wyrmkin tho, you'll be sad
+{/c}
+\n{c:druid}
+\n|cffff7d0aDruids|r:\n
+\nYou spam cast {spell:18658}|cffff7d0aHibernate|r on {spell:22424}Death Talon Wyrmkin.
+{/c}
+\n|cff808080v2.1, meroe for <Serenity>|r

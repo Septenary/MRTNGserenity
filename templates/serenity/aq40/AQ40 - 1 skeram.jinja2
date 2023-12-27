@@ -1,0 +1,33 @@
+{{ colortext("palevioletred", "**skeram trash") }}
+\nmini-moams
+\n{skull} {{ first(raid.getplayers_by_flag("is_tank", True)) }} {cross} {{ second(raid.getplayers_by_flag("is_tank", True)) }}
+\nKill + {Priest}: Mana Drain
+\na'sath - find your target before combat starts
+\n{triangle} {{ first(raid.getplayers_by_flag("is_tank", True)) }} ( {{first(players_by_class("Mage"))}} )
+\n{diamond} {{ second(raid.getplayers_by_flag("is_tank", True)) }} ( {{second(players_by_class("Mage"))}} )
+\n{circle} {{ third(raid.getplayers_by_flag("is_tank", True)) }} ( {{third(players_by_class("Mage"))}} )
+\n{star} {{ second(raid.getplayers_by_classspec("Warrior", "Fury")) }} ( {{fourth(players_by_class("Mage"))}} )
+\n
+\n{Mage}: Detect Magic {icon:136235}RNG
+\n|cffff0000Reflects/Mending|r
+\n|cffee5555Knockback/Mortal Strike|r
+\n|cffffff00Thorns/Thunderclap|r
+\n|cff00ff00Mana Drain/Shadow Storm|r
+\n## |cff55ee55Respect kill order|r
+\n{{ colortext("palevioletred", "*skeram") }}
+\n{cross} |cffff00ffLEFT|r [ {{ second(raid.getplayers_by_flag("is_tank", True)) }} ]
+\n{cross}( {{second(players_by_class("Rogue"))}}, {{ second(raid.getplayers_by_classspec("Warrior", "Fury")) }} )
+\n{skull} |cffff00ffMIDDLE|r [ {{ first(raid.getplayers_by_flag("is_tank", True)) }} ]
+\n{skull}( {{first(players_by_class("Rogue"))}}, {{ first(raid.getplayers_by_classspec("Warrior", "Fury")) }} )
+\n{square} |cffff00ffRIGHT|r [ {{ third(raid.getplayers_by_flag("is_tank", True)) }} ]
+\n{square}( {{third(players_by_class("Rogue"))}}, {{ third(raid.getplayers_by_classspec("Warrior", "Fury")) }} )
+\n
+\n{Warrior} Drag your copy to its platform on teleport
+\n{Warrior}{Rogue} Kick explosions
+\n{Hunter}{Priest}{Mage}{Warlock}{Druid} Ranged can pump on top ledge
+\nBoss makes false copies 75%/50%/25%
+\nSheep/Blind/Fear/Sleep MC'd melee
+\nDon't kill your friends, do kill clones first
+\n{c:Rogue}{Rogue}{icon:136066} |cfffff569Mind-Numbing is your friend.|r
+{/c}
+\n|cff808080v2.1, meroe for <Serenity>|r

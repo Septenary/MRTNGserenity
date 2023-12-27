@@ -46,6 +46,10 @@ def parse_cli() -> dict[str, any]:
     )
     return parser.parse_args()
 
+def set_default(obj):
+    if isinstance(obj, set):
+        return list(obj)
+    raise TypeError
 
 def load_raid(raid_json: str) -> Raid:
     new_raid = Raid()
@@ -92,6 +96,78 @@ def first(*players: Player | str | tuple[Player], errors: bool = True) -> Player
     return "MISSING_PLAYER"
 
 
+def second(*players: Player | str | tuple[Player], errors: bool = True) -> Player:
+    original_players = players
+    if isinstance(players, tuple):
+        if isinstance(players[0], list):
+            players = players[0]
+    for player in players[1:]:
+        if isinstance(player, str) and raid.getplayer_by_name(player, errors=False):
+            return raid.getplayer_by_name(player)
+        if isinstance(player, Player):
+            return player
+
+    # Bad if we get here
+    if errors:
+        errorlog.add(
+            f"second{original_players} was called, but none of those people are in the raid"
+        )
+    return "MISSING_PLAYER"
+
+def third(*players: Player | str | tuple[Player], errors: bool = True) -> Player:
+    original_players = players
+    if isinstance(players, tuple):
+        if isinstance(players[0], list):
+            players = players[0]
+    for player in players[2:]:
+        if isinstance(player, str) and raid.getplayer_by_name(player, errors=False):
+            return raid.getplayer_by_name(player)
+        if isinstance(player, Player):
+            return player
+
+    # Bad if we get here
+    if errors:
+        errorlog.add(
+            f"third{original_players} was called, but none of those people are in the raid"
+        )
+    return "MISSING_PLAYER"
+
+def fourth(*players: Player | str | tuple[Player], errors: bool = True) -> Player:
+    original_players = players
+    if isinstance(players, tuple):
+        if isinstance(players[0], list):
+            players = players[0]
+    for player in players[3:]:
+        if isinstance(player, str) and raid.getplayer_by_name(player, errors=False):
+            return raid.getplayer_by_name(player)
+        if isinstance(player, Player):
+            return player
+
+    # Bad if we get here
+    if errors:
+        errorlog.add(
+            f"fourth{original_players} was called, but none of those people are in the raid"
+        )
+    return "MISSING_PLAYER"
+
+def fifth(*players: Player | str | tuple[Player], errors: bool = True) -> Player:
+    original_players = players
+    if isinstance(players, tuple):
+        if isinstance(players[0], list):
+            players = players[0]
+    for player in players[4:]:
+        if isinstance(player, str) and raid.getplayer_by_name(player, errors=False):
+            return raid.getplayer_by_name(player)
+        if isinstance(player, Player):
+            return player
+
+    # Bad if we get here
+    if errors:
+        errorlog.add(
+            f"fifth{original_players} was called, but none of those people are in the raid"
+        )
+    return "MISSING_PLAYER"
+
 def rand(*players: Player | str | tuple[Player], errors: bool = True) -> Player:
     original_players = players
     if isinstance(players, tuple):
@@ -108,6 +184,15 @@ def rand(*players: Player | str | tuple[Player], errors: bool = True) -> Player:
             )
     return "MISSING_PLAYER"
 
+def randClasses():
+    classes = {}
+    for gc in GameClass:
+        classes[gc] = random.sample(raid.getplayers(gc), k=len(raid.getplayers(gc)))
+    return classes
+
+def randList(gameclass: GameClass, randClasses) -> list[Player]:
+    players = randClasses.get(gameclass, [])
+    return players
 
 def assign(ass: str) -> Player:
     if "/" in ass:
@@ -154,7 +239,6 @@ class Undefined(jinja2.Undefined):
         )
         return "MISSING_DATA"
 
-
 def main():
     # Parse CLI.
     args = parse_cli()
@@ -184,12 +268,19 @@ def main():
     environment.globals["assignments"] = assignments
     environment.globals["assign"] = assign
     environment.globals["first"] = first
+    environment.globals["second"] = second
+    environment.globals["third"] = third
+    environment.globals["fourth"] = fourth
+    environment.globals["fifth"] = fifth
     environment.globals["random"] = rand
     environment.globals["players_by_class"] = players_by_class
     environment.globals["players_by_spec"] = players_by_spec
+    classes = randClasses()
+    environment.globals["randomList"] = lambda gcs: randList(gcs, classes)
 
     for player in raid.players:
         environment.globals[player.name] = player.color_name()
+
 
     # Read and render each template (except the header)
     template_files = [
@@ -200,13 +291,19 @@ def main():
             f"{colorama.Fore.RED}*** ERROR: No template files found in {args.templates} ***{colorama.Style.RESET_ALL}"
         )
         sys.exit(1)
+
+    y = {}
     for template_file in template_files:
         template = environment.get_template(str(template_file))
         x = template.render(raid=raid)
         print("===========================================")
         print(x)
+        y[str(pathlib.Path(template_file).stem)] = x
+
+    #y = json.dumps(y, default=set_default)
+    with open('output.json', 'w') as f:
+        json.dump(y,f, separators=(',', ': ')) 
+
     errorlog.show()
-
-
 if __name__ == "__main__":
     main()

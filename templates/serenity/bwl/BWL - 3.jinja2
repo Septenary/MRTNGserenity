@@ -1,0 +1,31 @@
+{{ colortext("palevioletred", "**bwl trash") }}
+\n{{ colortext("palevioletred", "***lab trash") }}
+\n{skull}{cross} Warlock: 
+{skull}{{ first(raid.getplayers_by_flag("is_tank", True))}}
+{cross}{{ second(raid.getplayers_by_flag("is_tank", True))}}
+\n{square}{moon} Spellbinder: 
+{square}{{ third(raid.getplayers_by_flag("is_tank", True))}} 
+{moon}{{ fourth(raid.getplayers_by_flag("is_tank", True))}} 
+\n{triangle} Wyrm: {{ second(raid.getplayers_by_classspec("WARRIOR", "Fury")) }}
+\n
+\n{{ colortext("palevioletred", "***firemaw trash") }}
+\n{skull}{cross}{square} +{star}
+\n{skull}{{ first(raid.getplayers_by_flag("is_tank", True))}}
+\n{cross}{{ fourth(raid.getplayers_by_flag("is_tank", True))}}
+\n{square}{{ third(raid.getplayers_by_flag("is_tank", True))}} 
+\n{star}[ {{ second(raid.getplayers_by_flag("is_tank", True))}} <=> {{ second(raid.getplayers_by_classspec("WARRIOR", "Fury")) }} ]
+\n
+\n{{ colortext("palevioletred", "***chromag trash") }}
+\n{skull} = |cffff00ffLEFT|r
+\n{skull}( {{first(players_by_class("Hunter"))}} / {{first(players_by_class("Mage"))}} )
+\n{skull}[ {{ first(raid.getplayers_by_flag("is_tank", True))}} <=> {{ first(raid.getplayers_by_classspec("WARRIOR", "Fury")) }} ]
+\n
+\n{cross} = |cffff00ffMIDDLE|r
+\n{cross}( {{second(players_by_class("Hunter"))}} / {{second(players_by_class("Mage"))}} )
+\n{cross}[ {{ second(raid.getplayers_by_flag("is_tank", True))}} <=> {{ second(raid.getplayers_by_classspec("WARRIOR", "Fury")) }} ]
+\n
+\n{square} = |cffff00ffRIGHT|r
+\n{square}( {{third(players_by_class("Hunter"))}} / {{third(players_by_class("Mage"))}} )
+\n{square}[ {{ third(raid.getplayers_by_flag("is_tank", True))}} <=> {{ third(raid.getplayers_by_classspec("WARRIOR", "Fury")) }} ]
+\n
+\n{Hunter}{Priest}{Mage}{Warlock}{Druid} Weakness increases your |cffee5555threat generated|r, so |cff55ee55switch targets|r or you will |cffff0000wipe the raid|r

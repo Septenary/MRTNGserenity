@@ -1,0 +1,40 @@
+{# 
+    You can also use these tags to create multiline comments.
+    Comments can span multiple lines, or all be anywhere.
+#}
+
+{#
+    You can get the first player from a list of candidate players, based on who is in the raid.
+    This below will be Pumpledin, as foo isn't in the raid.
+#}
+This will be Pumpledin, as both are in the list but Pumpledin is first: {{ first("Pumpledin", "Nicc") }} \n
+This will be Burdock, as while Foobar is first, they aren't in the raid: {{ first("Foobar", "Burdock") }}
+\n\n
+
+{# 
+    This will select a random player from a list, if you want to fairly "spread the load".
+    It will still ignore people that don't exist.
+#}
+{{ random("Kishibe", "Meroe") }}
+\n\n
+
+{#
+    Jinja2 has built in filters. The most useful are likely to be first and random.
+#}
+
+This is all the mage in the raid, regardless of spec: {{ players_by_class("MAGE") }}
+\n
+This is the first mage: {{ first(players_by_class("MAGE")) }}\n
+This is the second mage: {{ second(players_by_class("MAGE")) }}\n
+This is the third mage: {{ third(players_by_class("MAGE")) }}\n
+This is the fourth mage: {{ fourth(players_by_class("MAGE")) }}\n
+This is all the healers: {{ raid.getplayers_by_flag("is_healer", True)}}
+
+
+\n
+This is a random priest: {{ random(players_by_class("PRIEST")) }}
+\n\n
+
+
+
+
